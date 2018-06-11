@@ -54,13 +54,12 @@ func Intersection(x []string, y []string) []string {
 	return intersection
 }
 
+//XとYの差集合
 func Difference(x []string, y []string) []string {
 	difference := []string{}
 	for _, char := range x {
-		for _, char2 := range y {
-			if isSame(char2, difference) {
-				difference = append(difference, string(char))
-			}
+		if !isSame(char, y) {
+			difference = append(difference, string(char))
 		}
 	}
 	return difference
@@ -76,14 +75,11 @@ func main() {
 	X := CharBigram(s1, 2)
 	Y := CharBigram(s2, 2)
 
-	fmt.Print("X:")
-	fmt.Println(X)
-	fmt.Print("Y:")
-	fmt.Println(Y)
-	fmt.Print("和集合:")
-	fmt.Println(Union(X, Y))
-	fmt.Print("積集合:")
-	fmt.Println(Intersection(X, Y))
-	fmt.Print("差集合:")
-	fmt.Println(Difference(X, Y))
+	fmt.Print("X : ", X, "\n")
+	fmt.Print("Y : ", Y, "\n")
+	fmt.Print("和集合 : ", Union(X, Y), "\n")
+	fmt.Print("積集合 : ", Intersection(X, Y), "\n")
+	fmt.Print("差集合 : ", Difference(X, Y), "\n")
+	fmt.Print("Xにseがあるか : ", isSame("se", X), "\n")
+	fmt.Print("Yにseがあるか : ", isSame("se", Y), "\n")
 }
